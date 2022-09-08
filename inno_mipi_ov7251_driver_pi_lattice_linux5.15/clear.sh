@@ -1,0 +1,10 @@
+sudo rm *.dtbo
+sudo rm *.mod
+sudo rm *.mod.*
+sudo rm modules.order
+sudo rm Module.symvers
+sudo rm *.ko
+sudo rm ./inno_mipi_ov7251/*.ko
+sudo rm ./inno_mipi_ov7251/*.o
+sudo rm ./inno_mipi_ov7251/*.mod
+sudo rm ./inno_mipi_ov7251/*.mod.*
