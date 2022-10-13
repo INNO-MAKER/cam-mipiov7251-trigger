@@ -517,7 +517,7 @@ static int ov7251_set_fmt(struct v4l2_subdev *sd,
 #ifdef KERNEL_5_15
 			  struct v4l2_subdev_state *sd_state,
 #else			  
-			  //struct v4l2_subdev_pad_config *cfg,
+			  struct v4l2_subdev_pad_config *cfg,
 #endif		  
 			  struct v4l2_subdev_format *fmt)
 {
