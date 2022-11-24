@@ -39,7 +39,7 @@ clean:
 	-make -C $(KERNEL_BUILD_DIR)  M=$(PWD)  clean
 	rm -f $(SENSOR_DRIVER).dtbo
 
-install: all devicetree-install
+install: 
 	sudo install -p -m 644 $(SENSOR_DRIVER_DIR)/$(SENSOR_DRIVER).ko   $(KERNEL_I2C_DIR)/
 	sudo install -p -m 644 $(SENSOR_DRIVER).dtbo $(BOOT_OVERLAYS_DIR)/
 	sudo /sbin/depmod -a $(shell uname -r)
