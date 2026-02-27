@@ -15,9 +15,3 @@
 ### Working Mode
 - rpicam-hello --list-cameras
 
-~ Available cameras
------------------
-0 : ov7251 [640x480 10-bit MONO] (/base/axi/pcie@1000120000/rp1/i2c@88000/ov7251@60)
-    Modes: 'R10_CSI2P' : 640x480 [107.54 fps - (0, 0)/640x480 crop]
-                         640x480 [107.54 fps - (0, 0)/640x480 crop]
-                         640x480 [107.54 fps - (0, 0)/640x480 crop]
