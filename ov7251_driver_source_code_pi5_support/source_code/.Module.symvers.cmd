@@ -1,0 +1,1 @@
+savedcmd_/home/pi/cam-mipiov7251-trigger/ov7251_driver_source_code/source_code/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/pi/cam-mipiov7251-trigger/ov7251_driver_source_code/source_code/Module.symvers -n -T /home/pi/cam-mipiov7251-trigger/ov7251_driver_source_code/source_code/modules.order -i Module.symvers -e 

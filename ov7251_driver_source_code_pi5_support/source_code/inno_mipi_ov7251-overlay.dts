@@ -1,0 +1,170 @@
+//
+// Definitions for InnoMaker MIPI OV7251 camera module
+// Supports Raspberry Pi 4 and Pi 5 (cam0 and cam1 ports)
+//
+// Copyright (C) 2022 SHENZHEN InnoMaker
+//
+
+/dts-v1/;
+/plugin/;
+
+/{
+	compatible = "brcm,bcm2835";
+
+	fragment@0 {
+		target = <&i2c_csi_dsi>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+			inno_mipi_ov7251: inno_mipi_ov7251@60 {
+				compatible = "ovti,ov7251";
+				reg = <0x60>;
+				status = "okay";
+				rotation = <0>;
+				orientation = <2>;
+
+				pwdn-gpios = <&gpio 41 1>, <&gpio 32 1>;
+				clocks = <&inno_mipi_ov7251_clk>;
+
+				inno_mipi_ov7251_clk: camera-clk {
+					compatible = "fixed-clock";
+					#clock-cells = <0>;
+					clock-frequency = <24000000>;
+				};
+
+				port {
+					inno_mipi_ov7251_0: endpoint {
+						remote-endpoint = <&csi1_ep>;
+						clock-lanes = <0>;
+						data-lanes = <1>;
+						link-frequencies =
+							/bits/ 64 <400000000>;
+					};
+				};
+			};
+
+			inno_mipi_ov7251@10 {
+				compatible = "dummy";
+				reg = <0x10>;
+				status = "disabled";
+			};
+		};
+	};
+
+	fragment@1 {
+		target = <&csi1>;
+		__overlay__ {
+			status = "okay";
+
+			port {
+				csi1_ep: endpoint {
+					remote-endpoint = <&inno_mipi_ov7251_0>;
+					data-lanes = <1>;
+				};
+			};
+		};
+	};
+
+	fragment@2 {
+		target = <&i2c0_pins>;
+		__dormant__ {
+			brcm,pins = <28 29>;
+			brcm,function = <4>; /* alt0 */
+		};
+	};
+	fragment@3 {
+		target = <&i2c0_pins>;
+		__dormant__ {
+			brcm,pins = <44 45>;
+			brcm,function = <5>; /* alt1 */
+		};
+	};
+	fragment@4 {
+		target = <&i2c0if>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	/* cam0 port (Pi5 CAM0 / Pi4 secondary) */
+	fragment@10 {
+		target = <&i2c_csi_dsi0>;
+		__dormant__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+			inno_mipi_ov7251_0port: inno_mipi_ov7251@60 {
+				compatible = "ovti,ov7251";
+				reg = <0x60>;
+				status = "okay";
+				rotation = <0>;
+				orientation = <2>;
+
+				pwdn-gpios = <&gpio 41 1>, <&gpio 32 1>;
+				clocks = <&inno_mipi_ov7251_clk0>;
+
+				inno_mipi_ov7251_clk0: camera-clk0 {
+					compatible = "fixed-clock";
+					#clock-cells = <0>;
+					clock-frequency = <24000000>;
+				};
+
+				port {
+					inno_mipi_ov7251_0p: endpoint {
+						remote-endpoint = <&csi0_ep>;
+						clock-lanes = <0>;
+						data-lanes = <1>;
+						link-frequencies =
+							/bits/ 64 <400000000>;
+					};
+				};
+			};
+
+			inno_mipi_ov7251_ctrl0: inno_mipi_ov7251@10 {
+				compatible = "dummy";
+				reg = <0x10>;
+				status = "disabled";
+			};
+		};
+	};
+
+	fragment@11 {
+		target = <&csi0>;
+		__dormant__ {
+			status = "okay";
+
+			port {
+				csi0_ep: endpoint {
+					remote-endpoint = <&inno_mipi_ov7251_0p>;
+					data-lanes = <1>;
+				};
+			};
+		};
+	};
+
+	fragment@5 {
+		target-path="/__overrides__";
+		__overlay__ {
+			cam0-pwdn-ctrl = <&inno_mipi_ov7251>,"pwdn-gpios:0";
+			cam0-pwdn      = <&inno_mipi_ov7251>,"pwdn-gpios:4";
+			cam0-led-ctrl  = <&inno_mipi_ov7251>,"pwdn-gpios:12";
+			cam0-led       = <&inno_mipi_ov7251>,"pwdn-gpios:16";
+		};
+	};
+      fragment@6{
+            target=<&i2c0mux>;
+                 __overlay__ {
+
+            status="okay";
+         };
+
+       };
+
+	__overrides__ {
+		i2c_pins_28_29 = <0>,"+2-3";
+		/* Use cam0=1 to activate the cam0/CSI0 port fragments */
+		cam0 = <0>, "-0-1+10+11",
+		       <1>, "-0-1+10+11";
+	};
+};
