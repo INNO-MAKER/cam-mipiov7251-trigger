@@ -8,6 +8,6 @@
 - cd cam-mipiov7251-trigger
 - sudo cp ov7251_mono.json /usr/share/libcamera/ipa/rpi/pisp/
 - rebbot
-##After Reboot
+## After Reboot
 - rpicam-hello -t 0
 - or rpicam-hello -t 0 /usr/share/libcamera/ipa/rpi/pisp/ov7251_mono.json 
