@@ -7,7 +7,7 @@
 - download json file from our github: sudo git clone https://github.com/INNO-MAKER/cam-mipiov7251-trigger.git
 - cd cam-mipiov7251-trigger
 - sudo cp ov7251_mono.json /usr/share/libcamera/ipa/rpi/pisp/
-- rebbot
+- sudo reboot
 ## After Reboot
 - rpicam-hello -t 0
 - or rpicam-hello -t 0 /usr/share/libcamera/ipa/rpi/pisp/ov7251_mono.json 
