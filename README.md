@@ -18,4 +18,6 @@
 ### Quick start Guide for innomaker unique driver 
 - support software and hardware external trigger AND software trigger.
 - Download json file from our github: sudo git clone https://github.com/INNO-MAKER/cam-mipiov7251-trigger.git
+- cd cam-mipiov7251-trigger
+- sudo cp ov7251_mono.json /usr/share/libcamera/ipa/rpi/pisp/
 - Follower UserManual Compiler and install driver,Change working mode.
