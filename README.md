@@ -16,5 +16,6 @@
 - rpicam-hello --list-cameras
 
 ### Quick start Guide for innomaker unique driver 
-- support software and hardware external trigger
+- support software and hardware external trigger AND software trigger.
+- Download json file from our github: sudo git clone https://github.com/INNO-MAKER/cam-mipiov7251-trigger.git
 - Follower UserManual Compiler and install driver,Change working mode.
