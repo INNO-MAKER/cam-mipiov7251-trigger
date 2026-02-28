@@ -1,5 +1,6 @@
 # cam-mipiov7251-trigger
--Raspberry PI Latest OS  support ov7251 sensor module
+-Support Raspberry Pi Latest OS  build in driver 30fps/60fps/90fps;
+-Support Innomaker Unique Driver Which compitle with hardware and software external Trigger;
 
 ## Quick Start Guide for raspberry pi os build in driver
 - Modify config.txt sudo  nano /boot/firmware/config.txt
