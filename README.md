@@ -15,4 +15,6 @@
 ### Working Mode
 - rpicam-hello --list-cameras
 
-### Quick start Guide for innomaker unique driver support software and hardware external trigger 
+### Quick start Guide for innomaker unique driver 
+- support software and hardware external trigger
+- Follower UserManual Compiler and install driver,Change working mode.
