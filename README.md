@@ -21,3 +21,7 @@
 - cd cam-mipiov7251-trigger
 - sudo cp ov7251_mono.json /usr/share/libcamera/ipa/rpi/pisp/
 - Follower UserManual Compiler and install driver,Change working mode.
+
+## Timeout
+- If the cameras don’t all start within 1 second, the rpicam applications can time out. To prevent this, edit a configuration file on any Raspberry Pi with sink cameras.
+- https://www.raspberrypi.com/documentation/accessories/camera.html#libcamera-configuration
